@@ -63,9 +63,13 @@ will cause this inspection to fail and result in a thrown exception.
 
 
 ```javascript
+window.message = 'original';
+
 System.isolate(function () {
-    alert(message);
+    window.message = message;
 }, {'message': '12345'})
+
+alert(window.message === 'original'); // Should be true
 ```
 
 **Extension**
